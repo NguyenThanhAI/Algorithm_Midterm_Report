@@ -1,0 +1,281 @@
+\documentclass[14pt, a4paper]{article}
+\usepackage{minitoc}
+\usepackage[left=3.00cm, right=2.5cm, top=2.00cm, bottom=2.00cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{mathtools}
+\usepackage{graphicx}
+%\usepackage{algpseudocode}
+%\usepackage{algorithm}
+\usepackage[ruled,vlined,linesnumbered,algosection]{algorithm2e}
+\usepackage{blindtext}
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage[utf8]{vietnam}
+\usepackage[center]{caption}
+\usepackage[shortlabels]{enumitem}
+\usepackage{fancyhdr} % header, footer
+\usepackage{hyperref} % loại bỏ border với mục lục và công thức
+\usepackage[nonumberlist, nopostdot, nogroupskip]{glossaries}
+\usepackage{glossary-superragged}
+\usepackage{tikz,tkz-tab}
+\setglossarystyle{superraggedheaderborder}
+\pagestyle{fancy}
+%\usepackage[style=numeric,sortcites]{biblatex}
+%\addbibresource{ref.bib}
+%\usepackage[numbers]{natbib}
+\usepackage{indentfirst}
+\usepackage{multirow}
+\usepackage[natbib,backend=biber,style=ieee, sorting=ynt]{biblatex}
+\bibliography{ref.bib}
+
+\graphicspath{{./figures/}}
+
+
+\makenoidxglossaries
+
+% Danh mục thuật ngữ
+
+
+\hypersetup{
+    colorlinks=false,
+    pdfborder={0 0 0},
+}
+
+
+\fancyhf{}
+\rhead{\textbf{Môn học: Toán rời rạc và thuật toán}}
+\lhead{\textbf{GVHD: PGS. TS. Nguyễn Thị Hồng Minh}}
+\rfoot{\thepage}
+\lfoot{\textbf{Học viên thực hiện: Nguyễn Chí Thanh - 21007925}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+
+\setlength{\parindent}{0.5cm}
+
+\setcounter{secnumdepth}{3} % Cho phép subsubsection trong report
+\setcounter{tocdepth}{3} % Chèn subsubsection vào bảng mục lục
+
+\newtheorem{dl}{Định lý}
+\newtheorem{md}{Mệnh đề}
+\newtheorem{bd}{Bổ đề}
+\newtheorem{dn}{Định nghĩa}
+\newtheorem{hq}{Hệ quả}
+
+\numberwithin{dl}{section}
+\numberwithin{md}{section}
+\numberwithin{bd}{section}
+\numberwithin{dn}{section}
+\numberwithin{hq}{section}
+
+\doublespacing
+\AtBeginEnvironment{tabular}{\doublespacing}
+
+\begin{document}
+    \begin{titlepage}
+
+        \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+        \center % Center everything on the page
+
+        %----------------------------------------------------------------------------------------
+        %	HEADING SECTIONS
+        %----------------------------------------------------------------------------------------
+        \textsc{\LARGE Đại học Quốc Gia Hà Nội}\\[0.5cm]
+        \textsc{\LARGE Trường đại học Khoa học tự nhiên}\\[0.5cm] % Name of your university/college
+        \textsc{\LARGE Khoa Toán - Cơ - Tin học}\\[0.5cm]
+
+        \includegraphics[scale=0.2]{HUS-logo.jpg}\\[0.5cm]
+
+        \textsc{\Large Chuyên ngành: Khoa học dữ liệu}\\[0.5cm] % Major heading such as course name
+
+
+        %----------------------------------------------------------------------------------------
+        %	TITLE SECTION
+        %----------------------------------------------------------------------------------------
+
+        \HRule \\[0.4cm]
+        { \huge \bfseries THU HOẠCH THỰC TẾ MÔN HỌC}\\[0.4cm] % Title of your document
+        \HRule \\[1.5cm]
+
+        \textsc{\Large Môn học: Toán rời rạc và thuật toán}\\[1cm] % Minor heading such as course title
+
+
+        %\textsc{\Large Đề tài: Ước lượng ma trận hiệp phương sai tối ưu với \\ trung bình không hoàn hảo \\ trong mô hình khuếch toán xác suất}\\[2cm]
+
+
+        %----------------------------------------------------------------------------------------
+        %	AUTHOR SECTION
+        %----------------------------------------------------------------------------------------
+        \begin{minipage}{0.4\textwidth}
+            \begin{flushleft} \large
+            \emph{Giảng viên hướng dẫn:} \\
+            PGS. TS. Nguyễn Thị Hồng Minh % Supervisor's Name
+            \end{flushleft}
+        \end{minipage}\\[0.5cm]
+
+        \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+        \emph{Học viên thực hiện:}\\
+        Nguyễn Chí Thanh \\
+        MSHV: 21007925 \\ % Your name
+        Lớp: Khoa học dữ liệu - K4
+        \end{flushleft}
+        \end{minipage}
+
+
+        % If you don't want a supervisor, uncomment the two lines below and remove the section above
+        %\Large \emph{Author:}\\
+        %John \textsc{Smith}\\[3cm] % Your name
+
+        %----------------------------------------------------------------------------------------
+        %	DATE SECTION
+        %----------------------------------------------------------------------------------------
+
+        % I don't want day because it is English
+        % {\large \today}\\[2cm] % Date, change the \today to a set date if you want to be precise
+
+        %----------------------------------------------------------------------------------------
+        %	LOGO SECTION
+        %----------------------------------------------------------------------------------------
+
+        %\includegraphics{logo/rsz_3logo-khtn.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+
+        %----------------------------------------------------------------------------------------
+
+        \vfill % Fill the rest of the page with whitespace
+
+    \end{titlepage}
+
+    \cleardoublepage
+    \pagenumbering{gobble}
+    \tableofcontents
+    \newpage
+    \listoffigures
+    \newpage
+    \glsaddall 
+    \renewcommand*{\glossaryname}{Danh mục các từ viết tắt}
+    \renewcommand*{\acronymname}{Danh sách từ viết tắt}
+    \renewcommand*{\entryname}{Viết tắt}
+    \renewcommand*{\descriptionname}{Viết đầy đủ}
+    \printnoidxglossary
+    \cleardoublepage
+    \pagenumbering{arabic}
+
+    %\maketitle
+
+    \newpage
+
+    \nocite{*}
+
+    \begin{center}
+    \section*{LỜI MỞ ĐẦU}
+    \end{center}
+    \addcontentsline{toc}{section}{{\bf LỜI MỞ ĐẦU}\rm}
+
+    \newpage
+
+    \section{Các bài thuyết trình hướng nghiệp}
+
+    \subsection{Các cơ hội nghề nghiệp và định hướng trong thị trường CNTT}
+
+    Bài thuyết trình đầu tiên được thực hiện bởi ông Nguyễn Trung Kiên, Trưởng phòng phát triển phần mềm, Công ty Optimizely Việt Nam.
+    Công ty Optimizely được thành lập năm 1994 tại Thụy Điển. Trụ sở chính tại New York - Mỹ, có văn phòng ở nhiều nơi trên thế giới, chủ yếu ở Mỹ và châu Âu.
+    Optimizely đã được Garner vinh danh top 3 giải pháp tốt nhất về mảng DXP, CMS, Marketing automation liên tục từ năm 2019 đến năm 2022.
+    Optimizely Vietnam đã hoạt động được 25 năm, là môi trường làm việc quốc tế chuyên nghiệp và sáng tạo, được ITViec vinh danh top 15 công ty tốt nhất thị trường Việt Nam.
+
+    \subsubsection{Bức tranh tổng quát CNTT 2021-2025}
+
+    Giá trị nền kinh tế Internet từ 21 tỷ USD (2021) tăng trưởng lên 57 tỷ USD (2030).
+    Tốc độ tăng trưởng thị trường 17\% (2020), 31 \% (2021), dự kiến tốc độ bình quân 29 \% đến 2025.
+
+    Các ngành nghề khởi nghiệp được ưu tiên phát triển/hỗ trợ đến 2030 bao gồm:
+
+    
+    \begin{itemize}
+        \item Các công ty phát triển công nghệ lõi.
+        \item Các công ty phát triển các sản phẩm và dịch vụ công nghệ kỹ thuật số.
+        \item Các công ty phát triển các giải pháp công nghệ kỹ thuật số.
+        \item Khởi nghiệp công nghệ số
+    \end{itemize}
+
+    Một thống kê nhân sự trong ngành IT: tuổi nghề IT còn khá trẻ, số nhân sự dưới 30 tuổi chiếm tới 54 \%.
+    Số năm kinh nghiệm 3 năm trở lên chiếm 30 \% dưới 3 năm là 52 \%.
+    Phần lớn nhân sự trong ngành là nam giới với 90 \%.
+    Phân bố chủ yếu ở 2 thành phố lớn là Hà Nội và thành phố Hồ Chí Minh vứi tỷ lệ 89,4 \%.
+
+    Các công nghệ hay được sử dụng:
+
+    \begin{itemize}
+        \item Top 5 ngôn ngữ lập trình: Javascript, Java, NodeJS, PHP, C\#
+        \item Top 5 database: MySQL, SQL Server, MongoDB, PostgreSQL, Redis
+        \item Top 4 DevOps: Linux, DOcker, Bash, Kubernetes
+        \item Top 5 Cloud platform: AWS, Azure (Microsoft), VMWare, Firebase, Google cloud
+    \end{itemize}
+
+    Một số vị trí khó tìm ứng viên như Fullstack, Devops, Backend
+
+    Một số hình thức đánh giá năng lực kỹ thuật:
+
+    \begin{itemize}
+        \item Kiểm tra đánh giá với vấn đề - dự án thực tế.
+        \item Phỏng vấn code trực tiếp - tại chỗ.
+        \item Pair programming
+        \item Cuộc thi về tech thông qua các thử thách - trò chơi
+        \item Whiteboard coding test.
+        \item Kiểm tra đánh giá tại nhà
+    \end{itemize}
+
+    Một số lưu ý khi giao tiếp với nhà tuyển dụng:
+
+    \begin{itemize}
+        \item Dưới 10s là thời gian nhà tuyển dụng dành để xem CV.
+        \item Ứng viên cần chú ý những lỗi căn bản trong CV: Lỗi đánh máy, email không chuyên nghiệp, ảnh không phù hợp, hồ sơ facebook,
+        \item Bên cạnh chuyên môn, kỹ năng mềm, nhà tuyển dụng sẽ lưu ý các điểm sau:
+        \begin{itemize}
+            \item Phù hợp văn hóa
+            \item Phù hợp với vai trò và đội ngũ
+            \item Phong cách giao tiếp
+        \end{itemize}
+    \end{itemize}
+
+    \subsubsection{Data Scientist - Data Engineering}
+
+    Data Scientist - Data Engineering là người làm việc với dữ liệu, sử dụng các kỹ năng kỹ thuật, kỹ năng phân tích để xác định các mẫu, xử lý dữ liệu và rút ra kết luận có giá trị.
+
+    Data Scientist tập trung vào lấy mẫu, dựng mô hình dữ liệu, dự đoán kết quả
+
+    Data Engineering tập rung xây dưng ứng dụng data pipelines thực hiện mô hình và giao diện người dùng cuối
+
+    Kỹ năng: Machine Learning, tạo mô hình dữ liệu, Python, hiểu biết về kinh doanh, hoạt động doanh nghiệp, big data, hadoop, map reduce,\dots
+
+    \subsubsection{Fullstack - Blockchain Developer}
+
+    Fullstack Developer là lập trình viên web toàn diện, sử dụng thông thạo nhiều ngon ngữ, công cụ của cả frontend và backend cũng như cơ sở dữ liệu.
+
+    Blockchain Developer là người chịu trách nhiệm phát triển và cải tiến các ứng dụng liên quan đến blockchain, nổi tiếng là dApps (Decentralized Applications), hợp đồng thông minh (smart contract), thiết kế kiến trúc và giao thức blockchain.
+
+    Kỹ năng: ngôn ngữ lập trình (C++, Java, Python, Javascript,...) thuật toán, cấu trúc dữ liệu, cấu trúc phần mềm, smart contract, an ninh bảo mật, mã hóa,...
+
+    \subsection{Blockchain is eating you}
+
+    \subsection{Sinh viên Khoa Toán - Cơ - Tin học và con đường phát triển nghề nghiệp tại một tổ chức tài chính ngân hàng}
+
+    \section{Tham quan hội trại}
+
+    \section{Chuỗi bài giản về khoa học dữ liệu}
+
+    \subsection{Dự án giải mã 1000 hệ gen người Việt}
+
+    \subsection{Ứng dụng KHDL hỗ trợ khách hàng ra quyết định đầu tư thông minh tại TCBS (Techcom Securities)}
+
+    \subsection{Data Analytics: Leading continuous improvement and predicting trends}
+
+    \subsection{Ứng dụng của toán học hiện đại và khoa học dữ liệu để giải quyết các bài toán trong lĩnh vực chuỗi cung ứng}
+\end{document}
