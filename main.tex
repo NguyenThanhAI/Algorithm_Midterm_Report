@@ -463,7 +463,38 @@
 
     Để có thể làm việc với một lượng dữ liệu khổng lồ từ quá trình giải trình tự ta cần một nền tảng chuyên dụng cho dữ liệu lớn gồm các thành phần như: Apache Spark, Hadoop, Cassandra, Mesos, Apache HBase, Kubernetes, Elasticsearch.
     Các dữ liệu của công trình được chia làm hai phiên bản: Phiên bản 1 vào tháng 12/2020 với 58640 GB dữ liệu công khai và khoảng 450000 GB dữ liệu riêng tư. Phiên bản 2 vào tháng 12/2021 với 109308 GB dữ liệu mở và khoảng 1100000 GB dữ liệu riêng tư.
+
+    Một vấn đề rất quan trọng nữa là làm thế nào để phân tích dữ liệu gen? Ban đầu ta cần thu thập được dữ liệu gen.
+    Cả đoạn DNA của con người dài khoảng 3 tỷ ký tự. Nhưng ta chỉ có thể đọc được các đoạn phân mảnh khoảng 100 ký tự.
+    Vậy câu hỏi đặt ra là làm sao ta có thể xây dựng lại cả DNA chỉ từ các phân mảnh ngắn? Một số phương pháp hay được dùng như là FASTQ, đọc gióng hàng trình tự DNA, hoặc sử dụng phương pháp Bayes để xác định các biến thể DNA và ánh xạ các phân mảnh nhỏ.
+
+    Dữ liệu về gen của một người khoảng 50 - 70 GB dữ liệu và cần xử lý khoảng 500 - 700 GB dữ liệu qua toàn bộ quá trình xử lý.
+    Để xử lý dữ liệu về gen của một người cần khoảng 30000 năm nếu sử dụng thuật toán Knuth-Morris-Pratt và khoảng 30 giờ nêu sử dụng thuật toán FM-Index.
+    Ta giả sử một DNA có độ dài $n$ và độ dài từng phân mảnh đọc được là $m$ và $m \ll n$, $m \sim 10^2, n \sim 10^9$.
+    Đối với vét cạn độ phức tạp là $O(mn)$, giả sử số lần đọc là $N=10^9$, mỗi phép tính cần $t=10^{-6}$(s) ta cần thời gian là $mnNt\sim$ 3 triệu năm.
+    Đối với thuật toán Knuth-Morris-Pratt có độ phức tạp $O(m+n)$ ta cần thời gian là $(m+n)Nt\sim$ 30000 năm.
+
+    Nhưng ta có thể khai thác và sử dụng gen như thế nào trong y tế? 
+    Một ứng dụng nổi tiếng nhất của dữ liệu gen là y học chính xác, tùy thuộc vào kiểu gen mà sẽ có các cách điều trị ứng với từng bệnh.
+    Ứng dụng khác là dự đoán các bệnh có thể gặp phải bằng việc phân tích và phát hiện các đoạn gen nguy cơ cao gây một loại bệnh nào đó.
+    Một vài ứng dụng khác có thể kể đến như phát hiện phản ứng có hại với thuốc dựa trên dữ liệu gen, khả năng kháng thuốc của các loại vi khuẩn, vi-rút 
+
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics{Precise_Medicine.png}
+        \caption{So sánh y học truyền thống và y học chính xác}
+    \end{figure}
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics{predict-disease-risk.png}
+        \caption{Dự đoán nguy cơ mắc các bệnh dựa trên dữ liệu gen}
+    \end{figure}
+
     \subsection{Ứng dụng KHDL hỗ trợ khách hàng ra quyết định đầu tư thông minh tại TCBS (Techcom Securities)}
+
+    Bài thuyết trình được thực hiện bởi ông Phạm Xuân Dũng, Senior Manager, Data Scientist, Bộ phận Phân tích, nâng cao và sáng tạo (AnI) Công ty TCBS, Techcombank về chủ đề "Ứng dụng KHDL hỗ trợ khách hàng ra quyết định đầu tư thông minh tại TCBS (Techcom Securities)"
 
     \subsection{Data Analytics: Leading continuous improvement and predicting trends}
 
