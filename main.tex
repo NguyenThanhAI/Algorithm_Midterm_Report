@@ -350,6 +350,7 @@
         Để dễ tưởng tượng, chúng ta hãy cùng xem qua trường hợp đơn giản, với 4 vị tướng (gồm C, L1, L2, L3), và 1 kẻ phản bội, như sau:
 
         \begin{figure}[h!]
+            \centering
             \includegraphics{commander_leutenants.png}
             \caption{Các trường hợp xảy ra trong bài toán chỉ huy và trung úy}
         \end{figure}
@@ -423,10 +424,45 @@
 
     \section{Chuỗi bài giản về khoa học dữ liệu}
 
-    Bài thuyết trình được thực hiện bởi TS. Võ Sỹ Nam
-
     \subsection{Dự án giải mã 1000 hệ gen người Việt}
 
+    Bài thuyết trình được thực hiện bởi TS. Võ Sỹ Nam, công ty GeneStory trình bày về dự án "Giải mã 1000 hệ gen người Việt".
+    Bài thuyết trình đã đề cập đến lý thuyết cơ bản về DNA bao gồm: lịch sử ra đời mô hình, quá trình giải mã, các công trình nghiên cứu về nguồn gốc loài người dựa trên các công trình nghiên cứu về gen cũng như vai trò của việc giải mã gen trong kỷ nguyên của y học chính xác.
+
+    Cấu trúc DNA được James Watson và Francis Crick đề xuất trong quá trình nghiên cứu tại Lab Cavendish năm 1953.
+    Có nhiều thông tin cho rằng James Watson và Francis Crick đã lấy ý tưởng từ nhà nghiên cứu Rosalind Franklin tại Paris.
+    DNA có cấu trúc xoắn kép. DNA chứa đựng các thông tin di truyền từ thế hệ này sang thế hệ khác nhờ khả năng phân đôi trong quá trình sinh sản và quyết định tất cả các đặc điểm của chúng ta. DNA có ở trong nhân tế vào và một lượng nhỏ nằm trong ty thể. 
+    
+    Thông tin trong DNA được lưu trữ dưới dạng mã, được tạo thành từ bốn loại bazơ nitơ là: adenine (A), guanine (G), cytosine (C) và thymine (T). Các bazơ này bắt cặp với nhau, A với T và C với G, thông qua các liên kết hydro để tạo thành các đơn vị được gọi là cặp bazơ.
+
+    DNA có cấu trúc không gian dạng xoắn kép với 2 mạch song song. Thực tế, 2 mạch này xoắn đều xung quanh 1 mạch cố định và theo chiều ngược kim đồng hồ. Cấu trúc xoắn kép DNA của mỗi người là khác nhau, do đó mỗi chúng ta đều có các đặc điểm riêng biệt. Do có tính đặc thù nên nhờ phân tích DNA các nhà khoa học có thể khám phá ra sự phát triển và tiến hóa của mỗi giống loài cũng như tìm ra giải pháp tối ưu để hạn chế, điều trị các căn bệnh do đột biến DNA di truyền.
+
+    Ngoài ra việc nghiên cứu DNA còn có thể giúp chúng ta tìm ra nguồn gốc loài người cũng như quá trình di cư của tổ tiên chúng ta.
+    Công trình của các nhà khoa học tại Trung tâm nghiên cứu dữ liệu lớn tại Vingroup cho thấy di truyển người Việt có độ đa dạng cao
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics{immgrants_process.png}
+        \caption{Quá trình di cư của loài người qua công trình nghiên cứu DNA}
+    \end{figure}
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics{Vietnam_Extensive_Genetic_Diversity.png}
+        \caption{Độ đa dạng di truyền của người Việt}
+    \end{figure}
+
+    Với các tiến bộ về khoa học kỹ thuật, giải mã gen một người chỉ tốn khoảng 200 \$ và sẽ sớm đạt được 100 \$ (cách đây khoảng 20 năm chi phí này là hàng chục triệu \$)
+    Ngoài ra việc giải mã gen người còn đặt ra những thách thức về công nghệ lưu trữ dữ liệu: Để giải mã gen 1008 người Việt cần dung lượng khoảng 1200 TB dữ liệu với 37 \% đến từ miền Bắc, 22 \% đến từ miền Trung, 41 \% đến từ miền Nam.
+    
+    \begin{figure}[h!]
+        \centering
+        \includegraphics{Wetlab_to_Drylab.png}
+        \caption{Quy trình giải mã gen từ máy giải trình tự đến các phân tích về gen}
+    \end{figure}
+
+    Để có thể làm việc với một lượng dữ liệu khổng lồ từ quá trình giải trình tự ta cần một nền tảng chuyên dụng cho dữ liệu lớn gồm các thành phần như: Apache Spark, Hadoop, Cassandra, Mesos, Apache HBase, Kubernetes, Elasticsearch.
+    Các dữ liệu của công trình được chia làm hai phiên bản: Phiên bản 1 vào tháng 12/2020 với 58640 GB dữ liệu công khai và khoảng 450000 GB dữ liệu riêng tư. Phiên bản 2 vào tháng 12/2021 với 109308 GB dữ liệu mở và khoảng 1100000 GB dữ liệu riêng tư.
     \subsection{Ứng dụng KHDL hỗ trợ khách hàng ra quyết định đầu tư thông minh tại TCBS (Techcom Securities)}
 
     \subsection{Data Analytics: Leading continuous improvement and predicting trends}
