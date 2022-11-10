@@ -349,6 +349,10 @@
 
         Để dễ tưởng tượng, chúng ta hãy cùng xem qua trường hợp đơn giản, với 4 vị tướng (gồm C, L1, L2, L3), và 1 kẻ phản bội, như sau:
 
+        \begin{figure}[h!]
+            \includegraphics{commander_leutenants.png}
+            \caption{Các trường hợp xảy ra trong bài toán chỉ huy và trung úy}
+        \end{figure}
         \begin{itemize}
             \item Trường hợp 1, kẻ phản bội là L3. C sẽ gửi tin với nội dung v cho L1, L2, L3. L3 phản bội nên sẽ sửa đổi nội dung, và gửi x cho L2. Tuy nhiên, L2 sẽ nhận được v từ L1 và C và sẽ thấy là phần đông đã lựa chọn v. Từ đó những vị tướng trung thành, gồm C, L1 và L2 sẽ đạt được sự đồng thuận là phương án v, mặc cho L3 có gửi tin x.
             \item Trường hợp 2, kẻ phản bội là C. C có thể gửi x cho L1, gửi y cho L2 và gửi z cho L3. L1, L2, L3 đều trung thành, nên sẽ gửi tin mà họ nhận được cho những người khác. Như vậy L1 sẽ nhận được đủ cả 3 lệnh là x (từ C), y (từ L2) và z (từ L3). Trông có vẻ như không thể quyết định được đấy, nhưng thực chất, quyết định của cả 3 người sẽ là giống nhau, vì cùng là majority(x,y,z). Nếu x, y, z mang những nội dung hoàn toàn khác nhau, và không thể tính trọng số, tất cả sẽ theo lựa chọn default, ở đây có thể là rút quân chẳng hạn.
@@ -418,6 +422,8 @@
     \section{Tham quan hội trại}
 
     \section{Chuỗi bài giản về khoa học dữ liệu}
+
+    Bài thuyết trình được thực hiện bởi TS. Võ Sỹ Nam
 
     \subsection{Dự án giải mã 1000 hệ gen người Việt}
 
