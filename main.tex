@@ -697,6 +697,22 @@
         \Return{$\mu_1, \mu_2, \dots, \mu_k$}\;
     \end{algorithm}
 
+    Tiếp đến ta sẽ áp dụng giải thuật di truyền vào bài toán tối ưu hóa định tuyến đa phương tiện (mVRP).
+    Giải thuật di truyền giả lập cơ chế chọn lọc tự nhiên.
+    Giải thuật di truyền tạo ra một quần thể các vector số học gọi là nhiễm sắc thể,
+    mỗi nhiễm sắc thể biểu diễn một lời giải có thể của bài toán.
+    Các thành phần độc lập trong nhiễm sắc thể được gọi là gen.
+    Những nhiễm sắc thể mới được tạo bởi lai hoặc đột biến.
+    Sau đó những nhiễm sắc thể được đánh giá dựa trên hàm phù hợp.
+    Những nhiễm sắc thể càng phù hợp xác suất sống sót càng cao hơn.
+    Quần thể gen tiến hóa theo từng thế hệ và tạo ra những lời giải ngày càng tốt hơn.
+    Quá trình thực hiện giải thuật di truyền sẽ dừng khi giá trị hàm phù hợp đạt đến một giá trị đặt trước,
+    hoặc sau một khoảng thời gian đủ dài hoặc khi mà không có sự cải thiện nhiều ở giá trị hàm phù hợp trong một số bước lặp liên tiếp.
+    Mấu chốt của lời giải sử dụng giải thuật di truyền nằm ở việc sử dụng một biểu diễn nhiễm sắc thể của các lời giải bài toán một cách phù hợp.
+
+    Mã giả giải thuật di truyền:
+
+    
     \newpage
     \addcontentsline{toc}{section}{TÀI LIỆU THAM KHẢO}
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
