@@ -589,4 +589,115 @@
         \item Bài toán matching giữa người mua và bán dịch vụ sao cho tối ưu chi phí và dịch vụ
     \end{itemize}
 
+    \section{Bài toán tối ưu hóa định tuyến vận tải đa phương tiện sử dụng các thuật toán xấp xỉ}
+
+    Mục tiêu của bài toán là tạo ra một tuyến đường tối ưu cho bài toán định tuyến vận tải nhiều phương tiện (mVRP).
+    Ta sử dụng phương pháp phân cụm các thành phố biết trước dựa trên số phương tiện và từng cụm sẽ được phân bổ vào một phương tiện.
+    Thuật toán k-Means được sử dụng cho việc phân cụm các thành phố.
+    Sau khi phân cụm hoàn tất, một tuyến đường tối ưu được tạo ra cho từng phương tiện.
+    Khi các thành phố được gán cho các phương tiện, từng cụm sẽ được coi như là một bài toán định tuyến vận tải và sử dụng thuật toán di truyền để tìm giá trị tối ưu khoảng cách sau khi hội tụ.
+    Giải thuật di truyền trong trường hợp này tốt hơn các kỹ thuật heuristics và có chi phí tính toán thấp hơn.
+
+    Một vài survey đã tóm tắt các biến thể và các phương pháp của bài toán tối ưu hóa tổ hợp cho thấy một số biến thể có thể giải được bằng các kỹ thuật metaheuristics ví dụ:
+
+    \begin{itemize}
+        \item Bài toán định tuyến vận tải đa phương tiện (mVRP)
+        \item mVRP với phân bổ cân bằng giữa các nút với hàm mục tiêu đơn hoặc đa hàm mục tiêu
+    \end{itemize}
+
+    Trong bài toán định tuyến vận tải, số thành phố cần phải đi qua bởi một phương tiện cần được trả về cùng một thành phố nơi mà phương tiện này xuất phát.
+    Khi giải bài toán ta cần thử xây dựng tuyến đường mà tổng khoảng cách đi là nhỏ nhất.
+    Tất cả các phương tiện bắt đầu từ cùng thành phố gọi là kho và phải quay về đúng nơi này là điểm kết thúc của hành trình.
+
+    Nếu $n$ là số thành phố cần qua thì có $(n-1)!$ số tuyến đường khả dĩ.
+    Vì vậy thay vì xem xét tất cả các tuyến đường khả dĩ, các kỹ thuật heuristic giải bài toán định tuyến vận tải có khả năng giảm đáng kể số tuyến đường khả dĩ cần được xem xét.
+
+    Tổng quát hóa của bài toán tối ưu định tuyến vận tải là bài toán tối ưu hóa định tuyến vận tải đa phương tiện (mVRP), bao gồm xác định một tập tuyến đường cho $m$ phương tiện.
+    mVRP có thể được định nghĩa như sau: Cho một tập các nút, $m$ phương tiện được đặt tại một nhà khi tại một nút nào đó. Các nút còn lại (thành phố) cần được đi qua gọi là các nút trung gian.
+    Bài toán mVRP là tìm những tuyến đường cho tất cả $m$ phương tiện mà điểm xuất phát và điểm bắt đầu là một, và các điểm nút trung gian được đi qua đúng một lần và tổng chi phí đi qua các nút là nhỏ nhất.
+
+    Cấu trúc toán học của bài toán định tuyến vận tải là một đồ thị mà các thành phố là các nút của đồ thị.
+    Các kết nối giữa các cặp thành phố gọi là cạnh và từng cạnh có một chi phí tương ứng có thể là khoảng cách, thời gian hoặc một thuộc tính khác.
+    Nếu $n$ là số đỉnh biểu diễn các thành phố, cho một đồ thị có hướng $G$,
+    bài toán định tuyến vận tải là tìm một chu trình với chi phí nhỏ nhất đi qua từng đỉnh của $G$ đúng một lần.
+
+    Có nhiều cách biểu diễn hình thức toán học của bài toán định tuyến vận tải VRP, và có nhiều kiểu ràng buộc của bài toán.
+    Các ký hiệu chính thức:
+    \begin{itemize}
+        \item $n$ là số thành phố cần được đi qua, số đỉnh có trong đồ thị
+        \item $i, j, k$ chỉ số của các thành phố được đánh số từ $1$ đến $n$
+        \item $t$ là chỉ số bước thời gian
+        \item $x_{ijt}$ có giá trị là 1 nếu cạnh của đồ thị từ đỉnh $i$ đến đỉnh $j$ và đi ở bước $t$ trong định tuyến.
+        \item $d_{ij}$ là khoảng cách hoặc chi phí từ đỉnh $i$ đến đỉnh $j$
+    \end{itemize}
+
+    Ví dụ về một bài toán định tuyến vận tải quy hoạch tuyến tính:
+
+    \begin{itemize}
+        \item Hàm mục tiêu $Z$ cần được cực tiểu hóa là tổng của tổng chi phí của tất cả các phần tử trong định tuyến:
+        \begin{equation}
+            Z = \sum_{i=1}^n \sum_{j=1}^n \sum_{t=1}^n d_{ij} x_{ijt}
+        \end{equation}
+        \item Ràng buộc với tất cả các giá trị thời gian $t$ chỉ có một cung đường được chọn:
+        \begin{equation}
+            \sum_{i=1}^n \sum_{j=1}^n x_{ijt} = 1 \forall t
+        \end{equation}
+        \item Với từng thành phố chỉ có duy nhất một thành phố khác có xe đi đến tại mỗi một thời điểm:
+        \begin{equation}
+            \sum_{j=1}^n \sum_{t=1}^n x_{i j t}=1 \forall i
+        \end{equation}
+        \item Với từng thành phố chỉ có duy nhất một thành phố khác mà nó đi đến tại mỗi một thời điểm:
+        \begin{equation}
+            \sum_{i=1}^n \sum_{t=1}^n x_{ijt}=1 \forall i
+        \end{equation}
+        \item Khi một thành phố có một xe đến tại thời điểm $t$, xe này cần được rời ở thời điểm $t+1$:
+        \begin{equation}
+            \sum_{i=1}^n x_{i j t} = \sum_{k=1}^n x_{j k t + 1} \forall j \forall t
+        \end{equation}
+        \item Ngoài ra các biến quyết định $x_{i j t}$ chỉ có thể nhận giá trị 0 hoặc 1:
+        \begin{equation}
+            0 \leq x_{i j t} \leq 1
+        \end{equation}
+    \end{itemize}
+
+    Ta giả định các phương tiện xuất phát từ nhà kho đi qua một tập các thành phố và phải quay về đúng điểm xuất phát.
+    Không có ràng buộc về chi phí nhưng mỗi thành phố chỉ được các phương tiện đi qua đúng một lần.
+
+    Không gian tìm kiếm cho lời giải tắc lên khi số thành phố tăng lên.
+    Nếu có $N$ thành phố thì không gian tìm kiếm có lực lượng là $N!$ và chi phí tính toán sẽ rất cao.
+    Để giảm gánh nặng chi phí tính toán thì số thành phố cần được giảm bằng phân cụm.
+
+    k-means là một thuật toán phân loại hoặc phân nhóm các vật thể vào $k$ nhóm, $k$ là một số nguyên dương.
+    Quá trình gom nhóm được thực hiện bằng cách cực tiểu hóa tổng các bình phương khoảng cách giữa dữ liệu và trọng tâm của cụm tương ứng.
+
+    Ý tưởng chính là để xác định $k$ trọng tâm cho từng cụm. Từng trọng tâm cần được chọn hợp lý vì với các cách chọn trọng tâm khác nhau sẽ dẫn đến kết quả khác nhau.
+    Một cách chọn tốt là chọn các trọng tâm ban đầu càng xa các trọng tâm còn lại càng tốt.
+    Bước tiếp theo là chọn từng điểm thuộc về cụm nào bằng cách gán vào cụm ứng với trọng tâm gần nhất.
+    
+    Khi không còn điểm nào để gán, bước đầu tiên đã hoàn thành.
+    Ta cần tính lại vị trí của $k$ trọng tâm mới của từng cụm từ bước trước.
+    Sau khi đã tính $k$ trọng tâm mới, một bước tiếp theo là lại gán các điểm dữ liệu và cụm có trọng tâm tương ứng gần với nó nhất.
+    Một bước lặp lại được thực hiện. Ta sẽ dừng lại khi mà vị trí $k$ điểm trọng tâm không thay đổi nhiều.
+
+    Thủ tục của thuật toán k-means là:
+
+    \begin{algorithm}[h!]
+        \DontPrintSemicolon
+        \KwIn{Các điểm dữ liệu $x^{(1)}, x^{(2)}, \dots, x^{(n)}, k$}
+        \KwOut{$k$ điểm trọng tâm của từng cụm}
+        Khởi tạo các điểm trong tâm $\mu_1, \mu_2, \dots, \mu_k$ một cách ngẫu nghiên\;
+        \Repeat{hội tụ} {
+            \For{$i \gets 1$ \textbf{to} $n$} {
+                $c^{(i)} \gets \underset{j}{\mathrm{argmin}} \lVert x^{(i)} - \mu_j \rVert_2^2$\;
+            }
+            \For{$i \gets 1$ \textbf{to} $k$} {
+                $\mu_j \gets \dfrac{\sum_{i=1}^n 1\lbrace c^{(i)} = j \rbrace x^{(i)}}{\sum_{i=1}^n 1\lbrace c^{(i)} = j \rbrace}$\;
+            }
+        }
+        \Return{$\mu_1, \mu_2, \dots, \mu_k$}\;
+    \end{algorithm}
+
+    \newpage
+    \printbibliography[title={TÀI LIỆU THAM KHẢO}]
+
 \end{document}
