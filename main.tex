@@ -695,6 +695,7 @@
             }
         }
         \Return{$\mu_1, \mu_2, \dots, \mu_k$}\;
+        \caption{Thủ tục thực hiện phân cụm theo thuật toán K-means}
     \end{algorithm}
 
     Tiếp đến ta sẽ áp dụng giải thuật di truyền vào bài toán tối ưu hóa định tuyến đa phương tiện (mVRP).
@@ -711,8 +712,51 @@
     Mấu chốt của lời giải sử dụng giải thuật di truyền nằm ở việc sử dụng một biểu diễn nhiễm sắc thể của các lời giải bài toán một cách phù hợp.
 
     Mã giả giải thuật di truyền:
-
     
+    \begin{algorithm}[h!]
+        \DontPrintSemicolon
+        Khởi tạo quần thể lời giải ban đầu $P$\;
+        \Repeat{đạt điều kiện dừng}{
+            \ForEach{$X \in P$}{
+                $C(X) \gets Cost(X)$\;
+                $P^{\prime} \gets$ các phần tử phù hợp nhất từ $P$\;
+                $P^{\prime\prime} \gets \emptyset$\;
+                \Repeat{đủ số lượng phần tử thế hệ sau được sinh ra}{
+                    Chọn $X_1$ và $X_2$ một cách ngẫu nhiên từ $P^{\prime}$\;
+                    Lai tạo $X_1$ và $X_2$ tạo ra $X_{child}$\;
+                    $P^{\prime\prime} \gets P^{\prime\prime} \cup X_{child}$
+                }
+                \ForEach{$X \in P^{\prime\prime}$}{
+                    Áp dụng phép đột biến vào $X$\;
+                }
+            }
+            $P \gets P^{\prime \prime}$\;
+        }
+        \Return{$\underset{X \in P}{\mathrm{argmax}} \thickspace C(X)$}
+        \caption{Thủ tục thực hiện giải thuật di truyền}
+    \end{algorithm}
+    
+    Tồn tại một tập tối ưu các thành phố được phân bổ tới các phương tiện sau khi thực hiện thuật toán k-means.
+    Giải thuật di truyền bây giờ được áp dụng tới từng cụm thành phố và vòng lặp được thực hiện nhiều lần đến khi giá trị tối ưu cho khoảng cách đi bởi từng phương tiện được tìm thấy.
+
+    Hàm hợp lý là một loại đặc biệt của hàm mục tiêu lượng hóa tính tối ưu của một lời giải mà một nhiễm sắc thể có thể so sánh với các nhiễm sắc thể khác.
+    Nhiễm sắc thể tốt sẽ được lai tạo với các nhiễm sắc thể tốt khác để tạo nên một thế hệ mới tối ưu hơn.
+    Tuyến đường càng ngắn thì đọ phù hợp càng cao. Vì vậy, ta sẽ chọn hàm phù hợp là hàm ngịch đảo của tổng khoảng cách trong cách tuyến đường.
+    Hàm phù hợp được dừng là $f=\dfrac{1}{d_i}$ với $d_i$ là khoảng cách đi bởi một phương tiện sau khi đi hết các thành phố mà phương tiện này phải đi qua  
+
+    Để lựa chọn quần thể ban đầu, sau khi thực hiện thuật toán k-means, ta chọn một nhóm gồm 10 tuyến bao gồm tất cả các thành phố trong cụm được chọn từ quần thể của tất cả các tuyến khả dĩ.
+    Cách làm này dùng chọn ngẫu nhiên sử dụng xác suất dựa trên hàm phù hợp.
+
+    Để thực hiện phép lai ta sẽ sắp xếp quần thể theo chiều giảm của độ phù hợp.
+    Nhóm 7 thành viên có độ phù hợp cao nhất được lựa chọn và giá trị ngẫu nhiên được gán cho từng nhiễm sắc thể.
+    Trong bài toán này ta sẽ sử dụng xác suất lai là 0.8.
+
+    Từ quần thể được tạo ra sau quá trình lai tạo, một tập các nhiễm sức thể được lựa chọn cho quá trình đột biến dựa trên xác suất xảy ra đột biến.
+    Trong bài toán này ta đặt xác suất xảy ra đột biến là 0.1.
+    Sau khi thực hiện đột biến trên các nhiễm sắc thể được chọn, ta chọn tập 10 nhiễm sắc thể từ quần thể ban đầu cho vòng lặp tiếp theo.
+    Các bước lai tạo và đột biến được thực hiện lặp đi lặp lại nhiều lần đên khi giá trị hàm hợp lý của nhiễm sắc thể tốt nhất hội tụ về một giá trị hằng số. 
+    Từ đây ta thu được lời giải tối ưu.
+
     \newpage
     \addcontentsline{toc}{section}{TÀI LIỆU THAM KHẢO}
     \printbibliography[title={TÀI LIỆU THAM KHẢO}]
